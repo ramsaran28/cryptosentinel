@@ -1,5 +1,6 @@
 import { Agent } from "@mastra/core/agent";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { getCryptoPriceTool } from "../tools/crypto-tools";
 
 const openrouter = createOpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,
@@ -23,5 +24,5 @@ export const anomalyDetectorAgent = new Agent({
   
   Be fast, precise and clear. This is a real-time monitoring system.`,
   model: openrouter("openrouter/auto"),
-  tools: {},
+  tools: { getCryptoPriceTool },
 });

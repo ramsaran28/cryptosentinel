@@ -9,10 +9,12 @@ import { weatherAgent } from './agents/weather-agent';
 import { priceMonitorAgent } from './agents/price-monitor';
 import { anomalyDetectorAgent } from './agents/anomaly-detector';
 import { toolCallAppropriatenessScorer, completenessScorer, translationScorer } from './scorers/weather-scorer';
+import { cryptoPipeline } from './workflows/crypto-pipeline';
+import { sentimentAgent } from './agents/sentiment-agent';
 
 export const mastra = new Mastra({
-  workflows: { weatherWorkflow },
-  agents: { weatherAgent, priceMonitorAgent, anomalyDetectorAgent },
+  workflows: { weatherWorkflow, cryptoPipeline },
+  agents: { weatherAgent, priceMonitorAgent, anomalyDetectorAgent,sentimentAgent },
   scorers: { toolCallAppropriatenessScorer, completenessScorer, translationScorer },
   storage: new MastraCompositeStore({
     id: 'composite-storage',
